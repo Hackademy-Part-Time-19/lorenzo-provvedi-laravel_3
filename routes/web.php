@@ -14,11 +14,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('views.welcome');
 });
 
 Route::get('/home', function () {
-    return view('Homepage',['titoloblog' =>'pagina principale']);
+    return view('views.Homepage',['titoloblog' =>'pagina principale']);
 })->name("home");
 
 
@@ -31,12 +31,12 @@ Route::get('/articoli', function () {
                  ['titolo'=> 'Monster', 'categoria'=> 'Dark Mistery', 'descrizione'=> 'capolavoro come pochi'],];
                  
     
-    return view('Articoli',['articoli'=>$articoli]);
+    return view('views.Articoli',['articoli'=>$articoli]);
 })->name("articoli");
 
 
 Route::get('/chisiamo', function () {
-    return view('Chi siamo');
+    return view('views.Chi siamo');
 })->name ("info");
 
 
@@ -48,11 +48,8 @@ Route::get('/articolo/{id}', function($id){
     ['titolo'=> 'Haikyuu!', 'categoria'=> 'Sport', 'descrizione'=> 'manga incentrato sulla pallavolo'],
     ['titolo'=> 'Monster', 'categoria'=> 'Dark Mistery', 'descrizione'=> 'capolavoro come pochi'],];
     
-    return view('Articolodescrizione',['articolo'=>$articoli[$id]]);
+    return view('views.Articolodescrizione',['articolo'=>$articoli[$id]]);
 })-> name("Articoli.Articolidescrizione");
 
 
 
-Route:: get('/io', function(){
-    return view ('io');
-});
