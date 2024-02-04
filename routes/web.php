@@ -17,26 +17,42 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-Route::get("/home",function(){
-    return view("pagina-home");
-});
-
-
-Route::get("/cards",function(){
-    return view("pagina-cards");
-});
+Route::get('/home', function () {
+    return view('Homepage',['titoloblog' =>'pagina principale']);
+})->name("home");
 
 
-Route::get("/registrazione",function(){
-    return view("pagina-registrazione");
-});
+Route::get('/articoli', function () {
+    
+    $articoli = [['titolo'=> 'Berserk', 'categoria'=> 'Dark Fantasy', 'descrizione'=> 'manga che ha fatto la storia'],
+                 ['titolo'=> 'Hunter x Hunter', 'categoria'=> 'shonen', 'descrizione'=> 'manga con combattimenti in stile arti marziali'],
+                 ['titolo'=> 'One Punch Man', 'categoria'=> 'shonen parody', 'descrizione'=> 'manga parodia degli shonen'],
+                 ['titolo'=> 'Haikyuu!', 'categoria'=> 'Sport', 'descrizione'=> 'manga incentrato sulla pallavolo'],
+                 ['titolo'=> 'Monster', 'categoria'=> 'Dark Mistery', 'descrizione'=> 'capolavoro come pochi'],];
+                 
+    
+    return view('Articoli',['articoli'=>$articoli]);
+})->name("articoli");
 
 
-Route::get("/prodotto",function(){
-    return view("pagina-prodotto");
-});
+Route::get('/chisiamo', function () {
+    return view('Chi siamo');
+})->name ("info");
 
-Route::get("/articoli",function(){
-    return view("pagina-articoli");
+
+Route::get('/articolo/{id}', function($id){
+
+    $articoli = [['titolo'=> 'Berserk', 'categoria'=> 'Dark Fantasy', 'descrizione'=> 'manga che ha fatto la storia'],
+    ['titolo'=> 'Hunter x Hunter', 'categoria'=> 'shonen', 'descrizione'=> 'manga con combattimenti in stile arti marziali'],
+    ['titolo'=> 'One Punch Man', 'categoria'=> 'shonen parody', 'descrizione'=> 'manga parodia degli shonen'],
+    ['titolo'=> 'Haikyuu!', 'categoria'=> 'Sport', 'descrizione'=> 'manga incentrato sulla pallavolo'],
+    ['titolo'=> 'Monster', 'categoria'=> 'Dark Mistery', 'descrizione'=> 'capolavoro come pochi'],];
+    
+    return view('Articolodescrizione',['articolo'=>$articoli[$id]]);
+})-> name("Articoli.Articolidescrizione");
+
+
+
+Route:: get('/io', function(){
+    return view ('io');
 });
